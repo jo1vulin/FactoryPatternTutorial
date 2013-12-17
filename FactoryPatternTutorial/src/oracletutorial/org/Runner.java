@@ -1,38 +1,31 @@
 package oracletutorial.org;
 
+import course.factory.AbstractCourseFactory;
+import course.factory.OnlineCourseFactory;
+import courses.AbstractCourse;
+
 public class Runner {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		System.out.println("Test");
 		
-		AbstractCourse objAbstractCourse = selectCourse("J");
+		AbstractCourseFactory objFactory = new OnlineCourseFactory();
+		AbstractCourse objCourse = objFactory.createCourse("J");
+		AbstractCourse objCourseNet = objFactory.createCourse("N");
+
 		
-		objAbstractCourse.createCourse();
-		objAbstractCourse.createShcedule();
+		System.out.println(objCourse.courseName);
+		System.out.println(objCourse.courseDuration);
 		
-		System.out.println(objAbstractCourse.courseName);
-		System.out.println(objAbstractCourse.courseDuration);
+		System.out.println(objCourseNet.courseName);
+		System.out.println(objCourseNet.courseDuration);
 
 	}
 
-	public static AbstractCourse selectCourse(String strUserInput) {
-		AbstractCourse objCourse = null;
-		switch (strUserInput) {
-		case "N":
-			objCourse = new NetCourse();
-			break;
-
-		case "J":
-			objCourse = new JavaCourse();
-			break;
-
-		}
-		
-		return objCourse;
-	}
+	
 
 }
